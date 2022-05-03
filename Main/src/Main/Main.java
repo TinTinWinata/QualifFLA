@@ -24,13 +24,15 @@ public class Main {
 			break;
 		case 3:
 			break;
-
 		}
 	}
 
 	public void startGame() {
+		game.createNewRoom();
 		game.createRestaurant();
-		game.start();
+		game.updateRoom();
+		
+		game.start(); 
 		playGame();
 	}
 

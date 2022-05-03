@@ -1,9 +1,14 @@
 package Employee;
 
+import Mediator.Mediator;
+import User.User;
+
 public class Employee {
 
 	private String name;
 	private int speed;
+	public Mediator room;
+	
 	
 	public Employee(String name) {
 		super();
@@ -30,4 +35,8 @@ public class Employee {
 		this.speed = speed;
 	}
 	
+	public void sendSignal(String msg)
+	{
+		this.room.sendUserSignal(this, msg);
+	}
 }

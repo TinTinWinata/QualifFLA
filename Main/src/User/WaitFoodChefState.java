@@ -25,7 +25,7 @@ public class WaitFoodChefState extends UserState{
 	
 	@Override
 	public void changeState() {
-		running = false;
+		running = false; 
 		u.setState(new WaitFoodWaiterState(u));
 	}
 }

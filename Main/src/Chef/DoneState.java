@@ -5,7 +5,7 @@ public class DoneState extends ChefState{
 	
 	public DoneState(Chef c) {
 		super(c);
-		c.setName("done");
+		this.name = "done";
 	}
 
 	@Override

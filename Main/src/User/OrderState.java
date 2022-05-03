@@ -17,9 +17,14 @@ public class OrderState extends UserState{
 	public void run() {
 		while(running)
 		{
-			util.wait(2000);
+			u.sendWaiterSignal("order");
 			u.minusTolerance(1);
 		}
+	}
+	
+	public void setRunning(boolean running)
+	{
+		this.running = running;
 	}
 	
 	@Override

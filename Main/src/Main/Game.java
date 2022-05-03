@@ -1,6 +1,10 @@
 package Main;
+import Chef.Chef;
+import Mediator.Room;
+import User.User;
 import User.UserGenerator;
 import Utillities.Utillities;
+import Waiter.Waiter;
 
 public class Game extends Thread{
 
@@ -10,6 +14,8 @@ public class Game extends Thread{
 	Utillities util = Utillities.getInstance();
 	Restaurant restaurant = Restaurant.getInstance();
 	UserGenerator userGenerator = UserGenerator.getInstance();
+	Room room;
+	
 	
 	private int initTotalChef = 2;
 	private int initTotalWaiter = 2;
@@ -23,8 +29,6 @@ public class Game extends Thread{
 		}
 		return gameInstance;
 	}
-	
-	
 	
 	public int menu()
 	{
@@ -65,14 +69,39 @@ public class Game extends Thread{
 		if(restaurant == null) {
 			System.out.println("There's no active restaurant");
 		}
-		System.out.println("Max : " + max);
-		System.out.println("User : " + restaurant.howManyUser());
-		System.out.println("Waiter : " + restaurant.howManyWaiter());
-		System.out.println("Cook : " + restaurant.howManyChef());
+//		System.out.println("Max : " + max);
+//		System.out.println("User : " + restaurant.howManyUser());
+//		System.out.println("Waiter : " + restaurant.howManyWaiter());
+//		System.out.println("Cook : " + restaurant.howManyChef());
 		System.out.println("Money : Rp. " + restaurant.getMoney());
 		System.out.println("Score : " + restaurant.getScore());
 		System.out.println("Size : " + restaurant.getChair());
 	}
+	
+	public void createNewRoom()
+	{
+		room = new Room();
+	}
+	
+	public void updateRoom()
+	{
+		if(room == null)
+		{
+			System.out.println("Please create a room first before update");
+			return;
+		}
+		
+		for (Chef chef : restaurant.getChefList()) {
+			chef.joinRoom(room);
+		}
+		for (Waiter waiter : restaurant.getWaiterList()) {
+			waiter.joinRoom(room);
+		}
+		for (User user : restaurant.getUserList()) {
+			user.joinRoom(room);
+		}
+	}
+	
 	
 	public int pauseMenu()
 	{
@@ -111,7 +140,7 @@ public class Game extends Thread{
 			}
 			if(i < restaurant.howManyUser())
 			{
-				user = restaurant.getUserList().get(i).getName() + 
+				user = restaurant.getUserList().get(i).getUserName() + 
 						" " + restaurant.getUserList().get(i).getUserState().getStateName();	
 			}
 			System.out.printf("%-20s %-20s %-20s\n",user, waiter, chef);

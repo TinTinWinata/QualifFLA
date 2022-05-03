@@ -2,6 +2,8 @@ package Waiter;
 
 import Employee.Employee;
 import Employee.EmployeeInterface;
+import Mediator.Mediator;
+import User.User;
 
 public class Waiter extends Employee implements EmployeeInterface{
 
@@ -20,6 +22,19 @@ public class Waiter extends Employee implements EmployeeInterface{
 		this.waiterState = state;
 	}
 	
-	
-	
+	@Override
+	public void joinRoom(Mediator room) {
+		this.room = room;
+		this.room.addWaiter(this);
+	}
+
+	@Override
+	public void recieveSignal(User user, String msg) {
+		if(!user.served())
+		{
+			
+		}
+	}
+		
+
 }
