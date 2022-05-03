@@ -1,3 +1,4 @@
+package Utillities;
 
 public class Highscore {
 
