@@ -1,10 +1,22 @@
 package User;
 
+import Employee.Employee;
+
 public abstract class UserState extends Thread{
 
 	public User u;
+	protected boolean running;
 	private String name;
+
 	
+	public boolean isRunning() {
+		return running;
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
+	}
+
 	public String getStateName() {
 		return name;
 	}
@@ -20,4 +32,6 @@ public abstract class UserState extends Thread{
 	}
 	
 	public abstract void changeState();
+
+
 }

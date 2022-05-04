@@ -32,7 +32,10 @@ public class Waiter extends Employee implements EmployeeInterface{
 	public void recieveSignal(User user, String msg) {
 		if(!user.served())
 		{
-			
+			if(msg.equals("order"))
+			{
+				user.getUserState().changeState();
+			}
 		}
 	}
 		

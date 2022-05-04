@@ -8,12 +8,41 @@ import User.User;
 public class Chef extends Employee implements EmployeeInterface{
 
 	private ChefState chefState;
+	private int speed;
+	private int skill;
 	
 	public Chef(String name) {
 		super(name);
 		this.chefState = new IdleState(this);
+		this.speed = 1 ;
+		this.skill = 1;
 	}
 	
+	public void addSkill(int skill)
+	{
+		this.skill += skill;
+	}
+	
+	public int getSpeed() {
+		return speed;
+	}
+
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+
+	public int getSkill() {
+		return skill;
+	}
+
+
+	public void setSkill(int skill) {
+		this.skill = skill;
+	}
+
+
 	public ChefState getChefState() {
 		return chefState;
 	}

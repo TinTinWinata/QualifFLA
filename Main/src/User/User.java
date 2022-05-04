@@ -59,8 +59,6 @@ public class User extends Thread{
 	public void setTolerance(int tolerance) {
 		this.tolerance = tolerance;
 	}
-
-
 	
 	public void joinRoom(Mediator room)
 	{

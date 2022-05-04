@@ -4,7 +4,7 @@ import Utillities.Utillities;
 
 public class OrderState extends UserState{
 
-	private boolean running;
+	
 	private Utillities util = Utillities.getInstance();
 	
 	public OrderState(User u) {
@@ -20,17 +20,13 @@ public class OrderState extends UserState{
 			u.sendWaiterSignal("order");
 			u.minusTolerance(1);
 		}
-	}
-	
-	public void setRunning(boolean running)
-	{
-		this.running = running;
+		changeState();
 	}
 	
 	@Override
 	public void changeState() {
 		running = false;
-		u.setState(new WaitFoodState(u));
+		u.setState(new OrderWaiterState(u));
 	}
 
 }

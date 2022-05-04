@@ -5,7 +5,6 @@ import Utillities.Utillities;
 public class WaitFoodChefState extends UserState{
 	
 	private Utillities util = Utillities.getInstance();
-	private boolean running;
 	
 	public WaitFoodChefState(User u) {
 		super(u);
@@ -21,6 +20,7 @@ public class WaitFoodChefState extends UserState{
 			util.wait(4000);
 			u.minusTolerance(1);
 		}
+		changeState();
 	}
 	
 	@Override

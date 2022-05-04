@@ -9,6 +9,6 @@ public class IdleState extends ChefState{
 	
 	@Override
 	public void changeState() {
-		c.setState(new CookState(c));
+		c.setState(new IdleState(c));
 	}
 }

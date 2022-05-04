@@ -8,6 +8,6 @@ public class IdleState extends WaiterState {
 
 	@Override
 	public void changeState() {
-		w.setState(new TakeOrderState(w));
+		w.setState(new IdleState(w));
 	}
 }

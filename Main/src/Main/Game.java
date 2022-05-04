@@ -103,6 +103,12 @@ public class Game extends Thread{
 	}
 	
 	
+	public void userDoneEat(Chef c, User u)
+	{
+		restaurant.removeUser(u);
+		c.setSkill(c.getSkill() * 30);;
+	}
+	
 	public int pauseMenu()
 	{
 		

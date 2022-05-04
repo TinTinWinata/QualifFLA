@@ -30,6 +30,16 @@ public class Restaurant {
 		money = 1300;
 	}
 	
+	public void removeUser(User u)
+	{
+		if(userList.contains(u))
+		{			
+			userList.remove(u);
+		}
+		else {
+			System.out.println("User not found!");
+		}
+	}
 	
 	public Vector<Waiter> getWaiterList() {
 		return waiterList;

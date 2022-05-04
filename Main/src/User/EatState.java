@@ -10,7 +10,10 @@ public class EatState extends UserState{
 	public EatState(User u) {
 		super(u);
 		this.setStateName("eat");
+		util.wait(6000);
+		
 	}
+	
 
 	@Override
 	public void changeState() {

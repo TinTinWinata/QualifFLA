@@ -31,7 +31,6 @@ public class Main {
 		game.createNewRoom();
 		game.createRestaurant();
 		game.updateRoom();
-		
 		game.start(); 
 		playGame();
 	}

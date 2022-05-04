@@ -9,7 +9,7 @@ public class WaitCookState extends WaiterState{
 
 	@Override
 	public void changeState() {
-		w.setState(new BringOrderState(w));
+		w.setState(new IdleState(w));
 	}
 
 }
