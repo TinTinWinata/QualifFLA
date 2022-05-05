@@ -14,7 +14,7 @@ public class Game extends Thread{
 	Utillities util = Utillities.getInstance();
 	Restaurant restaurant = Restaurant.getInstance();
 	UserGenerator userGenerator = UserGenerator.getInstance();
-	Room room;
+
 	
 	
 	private int initTotalChef = 2;
@@ -64,6 +64,16 @@ public class Game extends Thread{
 		}
 	}
 	
+	public void createNewRoom()
+	{
+		restaurant.createNewRoom();
+	}
+	
+	public void updateRoom()
+	{
+		restaurant.updateRoom();
+	}
+	
 	public void showStatus()
 	{
 		if(restaurant == null) {
@@ -78,31 +88,7 @@ public class Game extends Thread{
 		System.out.println("Size : " + restaurant.getChair());
 	}
 	
-	public void createNewRoom()
-	{
-		room = new Room();
-	}
-	
-	public void updateRoom()
-	{
-		if(room == null)
-		{
-			System.out.println("Please create a room first before update");
-			return;
-		}
-		
-		for (Chef chef : restaurant.getChefList()) {
-			chef.joinRoom(room);
-		}
-		for (Waiter waiter : restaurant.getWaiterList()) {
-			waiter.joinRoom(room);
-		}
-		for (User user : restaurant.getUserList()) {
-			user.joinRoom(room);
-		}
-	}
-	
-	
+
 	public void userDoneEat(Chef c, User u)
 	{
 		restaurant.removeUser(u);
@@ -129,7 +115,7 @@ public class Game extends Thread{
 	int max = 0;
 	public void showGameStatus()
 	{
-		System.out.printf("%-20s %-20s %-20s\n", "Customer", "Waiter", "Cook");
+		System.out.printf("%-30s %-50s %-30s\n", "Customer", "Waiter", "Cook");
 		max = util.max(restaurant.howManyWaiter(), restaurant.howManyChef(), restaurant.howManyUser());
 		for(int i=0;i<max;i++)
 		{
@@ -149,7 +135,7 @@ public class Game extends Thread{
 				user = restaurant.getUserList().get(i).getUserName() + 
 						" " + restaurant.getUserList().get(i).getUserState().getStateName();	
 			}
-			System.out.printf("%-20s %-20s %-20s\n",user, waiter, chef);
+			System.out.printf("%-30s %-50s %-30s\n",user, waiter, chef);
 		}
 	}
 	

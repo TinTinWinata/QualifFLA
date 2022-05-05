@@ -11,15 +11,17 @@ public class ServingFoodState extends WaiterState{
 	public ServingFoodState(Waiter w, User u) {
 		super(w);
 		this.user = u;
-		this.name = "serving food user " + u.getName();
+		this.name = "serving food user " + u.getUserName();
 		util = Utillities.getInstance();
+		this.start();
 	}
 
 	public void run()
 	{
 		util.wait(1000);
+		user.getUserState().setRunning(false);
 		user.getUserState().changeState();
-		changeState();
+		this.changeState();
 	}
 	
 	@Override

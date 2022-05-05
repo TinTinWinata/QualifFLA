@@ -20,13 +20,11 @@ public class WaitFoodState extends UserState{
 			util.wait(4000);
 			u.minusTolerance(1);
 		}
-		changeState();
 	}
 
 	@Override
 	public void changeState() {
-		running = false;
-		u.setState(new WaitFoodChefState(u));
+		u.setState(new WaitFoodChefState(u, getChef()));
 	}
 	
 }

@@ -1,14 +1,17 @@
 package User;
 
+import Chef.Chef;
 import Utillities.Utillities;
+import Waiter.Waiter;
 
 public class WaitFoodChefState extends UserState{
 	
 	private Utillities util = Utillities.getInstance();
 	
-	public WaitFoodChefState(User u) {
+	public WaitFoodChefState(User u, Chef c) {
 		super(u);
-		this.setStateName("wait food chef");
+		setChef(c);
+		this.setStateName("wait food chef " + c.getName());
 		running = true;
 		this.start();
 	}
@@ -25,7 +28,6 @@ public class WaitFoodChefState extends UserState{
 	
 	@Override
 	public void changeState() {
-		running = false; 
-		u.setState(new WaitFoodWaiterState(u));
+		u.setState(new WaitFoodWaiterState(u, getChef()));
 	}
 }

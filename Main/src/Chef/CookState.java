@@ -7,13 +7,12 @@ public class CookState extends ChefState{
 
 	
 	private Utillities util;
-	private User user;
 	
 	public CookState(User u, Chef c) {
 		super(c);
 		util = Utillities.getInstance();
-		this.user = u;
-		this.name = "cook";
+		this.setUser(u);
+		this.name = "cook " + u.getUserName();
 		this.start();
 	}
 
@@ -21,8 +20,10 @@ public class CookState extends ChefState{
 	{
 		int waitTime = (6 - c.getSpeed()) * 1000;
 		util.wait(waitTime);
-		user.getUserState().changeState();
-		this.changeState();
+		getUser().getUserState().setChef(c);
+		getUser().getUserState().setRunning(false);
+		getUser().getUserState().changeState();
+		this.changeDoneState(getUser());
 	}
 	
 	@Override

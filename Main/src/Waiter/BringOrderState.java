@@ -7,38 +7,49 @@ import Utillities.Utillities;
 
 public class BringOrderState extends WaiterState{
 
-	private Chef chef;
 	private Utillities util;
-	private User user;
 	
-	public BringOrderState(Waiter w, Chef c) {
+	public BringOrderState(Waiter w, Chef c, User u) {
 		super(w);
 		util = Utillities.getInstance();
-		chef = c;
-		this.name = "bring order chef " + c;
+		setUser(u);
+		setChef(c);
+		this.name = "bring order [" + c.getName() + "] [" + u.getUserName() + "]";
 		this.start();
 	}
 	
 	public void run()
 	{
-		if(chef.getChefState().getStateName().equals("idle"))
+		util.wait(1000);
+//		System.out.println("[DEBUG BringOrderState] user : " + getUser().getUserName());
+//		System.out.println("[DEBUG BringOrderState] chef : " + getChef().getName());
+		
+		if(!restaurant.ifUserExist(getUser()))
 		{
-			this.changeState();
-			util.wait(1000);
+			changeState();
 		}
-		else if(chef.getChefState().getStateName().equals("done")) {
-			util.wait(1000);
-			if(user != null && user.getUserState() instanceof WaitFoodWaiterState)
-			{
-				user.getUserState().setRunning(false);
-				chef.getChefState().changeState();
-			}
+		
+		if(getChef().getChefState().getStateName().equals("idle"))
+		{
+			getUser().getUserState().setChef(getChef());
+			getUser().getUserState().changeState();
+			getChef().getChefState().changeCookState(getUser());
+			this.changeState();
+		}
+		
+		else if(getChef().getChefState().getStateName().contains("done")) {
+//			System.out.println("[DEBUG BringOrderState] Bringing...");
+			getUser().getUserState().setChef(getChef());
+			getUser().getUserState().changeState();
+			getChef().getChefState().changeCookState(getUser());
+			w.getWaiterState().changeStateServingFood(getUser());
 		}
 	}
 
 	
 	@Override
 	public void changeState() {
+		this.setRunnable(false);
 		w.setState(new IdleState(w));
 	}
 	

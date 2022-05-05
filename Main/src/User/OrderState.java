@@ -13,20 +13,18 @@ public class OrderState extends UserState{
 		running = true;
 		this.start();
 	}
-
+	
 	public void run() {
 		while(running)
 		{
 			u.sendWaiterSignal("order");
 			u.minusTolerance(1);
 		}
-		changeState();
 	}
 	
 	@Override
 	public void changeState() {
-		running = false;
-		u.setState(new OrderWaiterState(u));
+		u.setState(new OrderWaiterState(u, getWaiter()));
 	}
 
 }

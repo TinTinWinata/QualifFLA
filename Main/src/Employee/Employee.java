@@ -35,8 +35,11 @@ public class Employee {
 		this.speed = speed;
 	}
 	
-	public void sendSignal(String msg)
+	
+	
+	public void sendUserSignal(String msg)
 	{
 		this.room.sendUserSignal(this, msg);
 	}
+
 }

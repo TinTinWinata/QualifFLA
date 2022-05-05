@@ -4,6 +4,7 @@ import java.util.Vector;
 import Chef.Chef;
 import Employee.Employee;
 import Employee.EmployeeInterface;
+import Mediator.Room;
 import User.User;
 import Utillities.Utillities;
 import Waiter.Waiter;
@@ -21,7 +22,8 @@ public class Restaurant {
 	private Vector<Chef> chefList = new Vector<>();
 	private Vector<User> userList = new Vector<>();
 	private int score;
-		
+	Room room;
+	
 	public void build(String name)
 	{
 		this.name = name;
@@ -30,15 +32,70 @@ public class Restaurant {
 		money = 1300;
 	}
 	
+
+	
+	public void createNewRoom()
+	{
+		room = new Room();
+	}
+	
+	
+	public void updateRoom()
+	{
+		if(room == null)
+		{
+			System.out.println("Please create a room first before update");
+			return;
+		}
+		
+		for (Chef chef : chefList) {
+			chef.joinRoom(room);
+			System.out.println(chef.getName() + " chef join room!");
+		}
+		for (Waiter waiter : waiterList) {
+			waiter.joinRoom(room);
+			System.out.println(waiter.getName() + " waiter join room!");
+		}
+		for (User user : userList) {
+			user.joinRoom(room);
+			System.out.println(user.getName() + " user join room!");
+		}
+	}
+	
+	public Chef findChef(String initial)
+	{
+		for (Chef chef : chefList) {
+			if(chef.getName().equals(initial))
+				return chef;
+		}
+		return null;
+	}
+	public User findUser(String name)
+	{
+		for (User user : userList) {
+			if(user.getName().equals(name))
+			{
+				return user;
+			}
+		}
+		return null;
+	}
+	
 	public void removeUser(User u)
 	{
 		if(userList.contains(u))
 		{			
 			userList.remove(u);
 		}
-		else {
-			System.out.println("User not found!");
+	}
+	
+	public boolean ifUserExist(User user)
+	{
+		for (User currUser : userList) {
+			if(currUser.equals(user))
+				return true;
 		}
+		return false;
 	}
 	
 	public Vector<Waiter> getWaiterList() {
@@ -108,6 +165,7 @@ public class Restaurant {
 	
 	public void newUser(User user)
 	{
+		user.joinRoom(this.room);
 		userList.add(user);
 	}
 	

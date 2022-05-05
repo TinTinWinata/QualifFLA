@@ -32,6 +32,7 @@ public class UserGenerator extends Thread {
         		{
         			User u = new User(util.generateInitial());
         			restaurant.newUser(u);
+        			
         		}
         	}        		
         	}

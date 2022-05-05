@@ -1,8 +1,10 @@
 package User;
 
+import Chef.Chef;
 import Employee.Employee;
 import Mediator.Mediator;
 import Utillities.Utillities;
+import Waiter.Waiter;
 
 public class User extends Thread{
 	
@@ -13,7 +15,7 @@ public class User extends Thread{
 	private int tolerance;
 	Mediator room;
 	private boolean isServe;
-	
+
 	public User(String name)
 	{
 		this.isServe = false;
@@ -65,7 +67,14 @@ public class User extends Thread{
 		this.room = room;
 		this.room.addUser(this);
 	}
+	
+	public void unJoinRoom(Mediator room)
+	{
+		this.room = room;
+		this.room.removeUser(this);
+	}
 
+	
 	public void sendSignal(String msg) {
 		this.room.sendChefSignal(this, msg);
 		this.room.sendWaiterSignal(this, msg);
@@ -75,6 +84,7 @@ public class User extends Thread{
 	{
 		this.room.sendWaiterSignal(this, msg);
 	}
+	
 	public void sendChefSignal(String msg)
 	{
 		this.room.sendChefSignal(this, msg);

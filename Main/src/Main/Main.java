@@ -41,6 +41,7 @@ public class Main {
 		util.nextLine();
 		pauseGame();
 	}
+	
 	public void pauseGame()
 	{
 		game.pause();
