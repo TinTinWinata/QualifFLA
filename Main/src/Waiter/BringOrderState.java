@@ -21,8 +21,6 @@ public class BringOrderState extends WaiterState{
 	public void run()
 	{
 		util.wait(1000);
-//		System.out.println("[DEBUG BringOrderState] user : " + getUser().getUserName());
-//		System.out.println("[DEBUG BringOrderState] chef : " + getChef().getName());
 		
 		if(!restaurant.ifUserExist(getUser()))
 		{
@@ -38,7 +36,6 @@ public class BringOrderState extends WaiterState{
 		}
 		
 		else if(getChef().getChefState().getStateName().contains("done")) {
-//			System.out.println("[DEBUG BringOrderState] Bringing...");
 			getUser().getUserState().setChef(getChef());
 			getUser().getUserState().changeState();
 			getChef().getChefState().changeCookState(getUser());

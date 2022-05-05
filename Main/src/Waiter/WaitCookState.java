@@ -4,7 +4,7 @@ import Chef.Chef;
 import User.User;
 import Utillities.Utillities;
 
-public class WaitCookState extends WaiterState{
+public class WaitCookState extends WaiterState {
 
 	private Utillities util;
 
@@ -16,19 +16,16 @@ public class WaitCookState extends WaiterState{
 		setRunnable(true);
 		this.start();
 	}
-	
 
-	
-	public void run()
-	{
-			w.sendChefSignal("wait cook");		
-		if(getChef() != null)
-		{
-			w.getWaiterState().changeStateBringOrder(getChef(), getUser());			
+	public void run() {
+		while (isRunnable()) {
+			w.sendChefSignal("wait cook");
+			if (getChef() != null) {
+				w.getWaiterState().changeStateBringOrder(getChef(), getUser());
+			}
 		}
-		
 	}
-	
+
 	@Override
 	public void changeState() {
 		w.setState(new IdleState(w));

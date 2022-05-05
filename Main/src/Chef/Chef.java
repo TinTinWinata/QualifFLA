@@ -12,6 +12,7 @@ public class Chef extends Employee implements EmployeeInterface {
 	private int speed;
 	private int skill;
 
+
 	public Chef(String name) {
 		super(name);
 		this.chefState = new IdleState(this);

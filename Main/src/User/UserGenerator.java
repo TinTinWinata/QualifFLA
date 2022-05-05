@@ -31,8 +31,8 @@ public class UserGenerator extends Thread {
         		if(randVal < 25)
         		{
         			User u = new User(util.generateInitial());
+        			u.setTolerance(10);
         			restaurant.newUser(u);
-        			
         		}
         	}        		
         	}

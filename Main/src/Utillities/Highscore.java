@@ -2,9 +2,9 @@ package Utillities;
 
 public class Highscore {
 
-	Highscore highscore;
+	private static Highscore highscore;
 	
-	public Highscore getHighscoreInstance()
+	public static Highscore getInstance()
 	{
 		if(highscore == null)
 		{

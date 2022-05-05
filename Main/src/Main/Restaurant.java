@@ -32,7 +32,10 @@ public class Restaurant {
 		money = 1300;
 	}
 	
-
+	public int getUserLength()
+	{
+		return userList.size();
+	}
 	
 	public void createNewRoom()
 	{
@@ -50,15 +53,15 @@ public class Restaurant {
 		
 		for (Chef chef : chefList) {
 			chef.joinRoom(room);
-			System.out.println(chef.getName() + " chef join room!");
+//			System.out.println(chef.getName() + " chef join room!");
 		}
 		for (Waiter waiter : waiterList) {
 			waiter.joinRoom(room);
-			System.out.println(waiter.getName() + " waiter join room!");
+//			System.out.println(waiter.getName() + " waiter join room!");
 		}
 		for (User user : userList) {
 			user.joinRoom(room);
-			System.out.println(user.getName() + " user join room!");
+//			System.out.println(user.getName() + " user join room!");
 		}
 	}
 	
@@ -85,6 +88,7 @@ public class Restaurant {
 	{
 		if(userList.contains(u))
 		{			
+			room.removeUser(u);
 			userList.remove(u);
 		}
 	}
