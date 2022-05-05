@@ -76,7 +76,7 @@ public class Restaurant {
 	public User findUser(String name)
 	{
 		for (User user : userList) {
-			if(user.getName().equals(name))
+			if(user.getUserName().equals(name))
 			{
 				return user;
 			}
@@ -96,7 +96,7 @@ public class Restaurant {
 	public boolean ifUserExist(User user)
 	{
 		for (User currUser : userList) {
-			if(currUser.equals(user))
+			if(currUser.getUserName().equals(user.getUserName()))
 				return true;
 		}
 		return false;
@@ -161,7 +161,7 @@ public class Restaurant {
 				return true;
 		}
 		for (User user : userList) {
-			if(user.getName().equals(initial))
+			if(user.getUserName().equals(initial))
 				return true;
 		}
 		return false;

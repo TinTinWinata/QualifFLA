@@ -19,6 +19,7 @@ public class WaitCookState extends WaiterState {
 
 	public void run() {
 		while (isRunnable()) {
+			util.wait(1000);
 			w.sendChefSignal("wait cook");
 			if (getChef() != null) {
 				w.getWaiterState().changeStateBringOrder(getChef(), getUser());

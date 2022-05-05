@@ -6,7 +6,7 @@ import Mediator.Mediator;
 import Utillities.Utillities;
 import Waiter.Waiter;
 
-public class User extends Thread{
+public class User{
 	
 	private Utillities util = Utillities.getInstance();
 	
