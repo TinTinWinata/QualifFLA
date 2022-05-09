@@ -1,0 +1,28 @@
+•	Singleton (highscore) 
+	- Class : Highscore.java
+
+•	Singleton (restaurant)
+	- Class : Restaurant.java
+
+•	State (Chef, User, Employee)
+	- Package : 
+		- Chef Package
+		- Employee Package
+		- User Package 
+
+•	Factory
+	- Class : Game.java (Line 318) -> Hire Employee (Using Factory) 
+	- Class : Restaurant.java (Line 135) -> Generate  Employee (Using Factory)
+
+•	Mediator
+	- Package : Mediator Package
+	- Class : Restaurant.java
+ 
+•	Observer
+	- Class : Game.java (Line 149) -> notifyStart (Observer)
+
+•	Façade  
+	- Class : 
+		- Game.java
+		- Utillities.java
+	 (Fungsionalitas logic game di sembunyikan di object Game.java)

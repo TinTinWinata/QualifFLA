@@ -1,7 +1,6 @@
 package Main;
 
 import Chef.Chef;
-import Mediator.Room;
 import User.User;
 import User.UserGenerator;
 import Utillities.Highscore;
@@ -84,8 +83,9 @@ public class Game extends Thread {
 
 	public void userDoneEat(Chef c, User u) {
 		restaurant.removeUser(u);
+		restaurant.addScore(restaurant.howManyEmployee() * 100);
+
 		c.setSkill(c.getSkill() * 30);
-		
 	}
 
 	public int pauseMenu() {
@@ -147,7 +147,7 @@ public class Game extends Thread {
 	
 	public void run() {
 		util.cls();
-		userGenerator.start();
+		userGenerator.notifyStart();
 		
 		while (runnable) {
 			util.wait(100);

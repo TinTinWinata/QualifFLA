@@ -2,8 +2,6 @@ package Main;
 import java.util.Vector;
 
 import Chef.Chef;
-import Employee.Employee;
-import Employee.EmployeeInterface;
 import Mediator.Room;
 import User.User;
 import Utillities.Utillities;
@@ -23,6 +21,16 @@ public class Restaurant {
 	private Vector<User> userList = new Vector<>();
 	private int score;
 	Room room;
+	
+	public void addScore(int addedScore)
+	{
+		score += addedScore;
+	}
+	
+	public int howManyEmployee()
+	{
+		return howManyChef() + howManyUser();
+	}
 	
 	public void build(String name)
 	{

@@ -70,7 +70,7 @@ public class Highscore {
 	
 	
 	public void readHighscore() {
-		Vector<String> dataList = util.read("./highscore.txt");
+		Vector<String> dataList = util.read("C:\\github\\QualifFLA\\Main\\src\\highscore.txt");
 		for (String str : dataList) {
 			String[] splittedStr = str.split("#", 2);
 			Integer score = Integer.parseInt(splittedStr[1]);
