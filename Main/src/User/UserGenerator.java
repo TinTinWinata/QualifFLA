@@ -10,8 +10,7 @@ public class UserGenerator extends Thread {
 	Utillities util = Utillities.getInstance();
 
 	private static UserGenerator userGeneratorInstance;
-	private boolean pause = true;
-
+	
 	public void notifyStart() {
 		this.start();
 	}

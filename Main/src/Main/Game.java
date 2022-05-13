@@ -84,7 +84,8 @@ public class Game extends Thread {
 	public void userDoneEat(Chef c, User u) {
 		restaurant.removeUser(u);
 		restaurant.addScore(restaurant.howManyEmployee() * 100);
-
+		restaurant.addMoney(restaurant.howManyEmployee() * 100);
+		
 		c.setSkill(c.getSkill() * 30);
 	}
 

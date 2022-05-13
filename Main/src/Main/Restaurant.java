@@ -6,6 +6,7 @@ import Mediator.Room;
 import User.User;
 import Utillities.Utillities;
 import Waiter.Waiter;
+import oracle.jrockit.jfr.ActiveRecordingEvent;
 
 public class Restaurant {
 
@@ -20,7 +21,15 @@ public class Restaurant {
 	private Vector<Chef> chefList = new Vector<>();
 	private Vector<User> userList = new Vector<>();
 	private int score;
+	
+	
+	RestaurantState state;
 	Room room;
+	
+	public void addMoney(int addedMoney)
+	{
+		money += addedMoney;
+	}
 	
 	public void addScore(int addedScore)
 	{
@@ -38,6 +47,7 @@ public class Restaurant {
 		chair = 4;
 		score = 0;
 		money = 1300;
+		state = new ActiveState(this);
 	}
 	
 	public int getUserLength()
